@@ -14,8 +14,6 @@ This is an example project for building REST APIs with ES6, Express and MongoDB.
 Getting Started
 ---------------
 
-docker container run -d -v mydata:/var/lib/mongo -p 27017:27017 --network my-network --rm --name database mongo:3.4-jessie
-docker  run -d --network my-network -p 8080:8080 --rm --name webapi -t dodorobot/nodejs-image-demo
 
 ```sh
 # clone it
@@ -42,13 +40,47 @@ docker build -t dodorobot/node-webapi-example .
 #          tag  tag name      Dockerfile location
 
 # run your docker
-docker run -p 8080:8080 dodorobot/node-webapi-example
-#                 ^            ^
-#          bind the port    container tag
+docker  run -p 8080:8080   -d   --network my-network --rm --name webapi -t dodorobot/nodejs-image-demo
+#                 ^         ^                ^        ^           ^                ^
+#          bind the port                                                        container tag
 #          to your host
 #          machine port   
 
 ```
+
+Run Env
+------
+```sh
+cd node-webapi-example
+
+# build the project
+npm run build
+
+# Build your docker
+docker build -t dodorobot/node-webapi-example .
+#            ^      ^           ^
+#          tag  tag name      Dockerfile location
+
+# create a network 
+docker create network my-network
+
+
+# run mongodb container
+docker container run -d -v mydata:/var/lib/mongo -p 27017:27017 --network my-network --rm --name database mongo:3.4-jessie
+#                                ^                      ^                       ^                                ^
+#                           volume on               bind the port           connect to                      container tag                                 
+#                           localhost               to your host            my-network  
+#                          to store data            machine port 
+
+# run your docker
+docker  run -p 8080:8080   -d   --network my-network --rm --name webapi -t dodorobot/nodejs-image-demo
+#                 ^         ^                ^         ^                            ^
+#          bind the port  detach         connect to    remove                  container tag
+#          to your host  console from    my-network    the name
+#          machine port   process                      when stop
+
+```
+
 
 License
 -------
