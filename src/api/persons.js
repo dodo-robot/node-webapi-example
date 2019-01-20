@@ -47,8 +47,6 @@ export default ({ config, db }) => resource({
 					res.status(400).json("Person already exists!");
 				}
 			});
-
-	
 		}else{
 			res.status(500).json(result.errors);
 		}

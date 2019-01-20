@@ -15,7 +15,6 @@ with MongoDB.
 Getting Started
 ---------------
 
-
 ```sh
 # clone it
 git clone https://github.com/dodo-robot/dodo-robot-node-webapi-example.git
@@ -51,7 +50,7 @@ Run environment with dockers
 cd node-webapi-example
 
 # create a network 
-docker create network my-network
+docker network create my-network
 
 # run mongodb container
 docker container run -d -v mydata:/var/lib/mongo -p 27017:27017 --network my-network --rm --name database mongo:3.4-jessie
@@ -61,7 +60,7 @@ docker container run -d -v mydata:/var/lib/mongo -p 27017:27017 --network my-net
 #                          to store data            machine port 
 
 # run this docker
-docker  run -p 8080:8080   -d   --network my-network --rm --name webapi -t dodorobot/nodejs-image-demo
+docker  run -p 8080:8080   -d   --network my-network --rm --name webapi -t dodorobot/node-webapi-example
 #                 ^         ^                ^         ^                            ^
 #          bind the port  detach         connect to    remove                  container tag
 #          to your host  console from    my-network    the name

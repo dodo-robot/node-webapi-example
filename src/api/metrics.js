@@ -1,6 +1,5 @@
 import resource from 'resource-router-middleware';
 import DummyMetric from '../models/DummyMetric';
-
 import personRepository from '../data/personRepository';
 
 var logger = require('log4js').getLogger();
@@ -26,5 +25,25 @@ export default ({ config, db }) => resource({
 		let m = new DummyMetric(metric.firstName+" "+metric.lastName);
 		res.json(m);
 	},
+
+	/** GET / - List all entities */
+	index({ params }, res) {
+		res.sendStatus(400);
+	},
+
+	/** POST / - Create a new entity */
+	create({ body }, res) {
+		res.sendStatus(400);
+	},
+
+	/** PUT /:id - Update a given entity */
+	update({ person, body }, res) {
+		res.sendStatus(400);
+	},
+
+	/** DELETE /:id - Delete a given entity */
+	delete({ person }, res) {
+		res.sendStatus(400);
+	}
 
 });
