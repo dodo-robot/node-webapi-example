@@ -3,7 +3,7 @@ Express & ES6 MongoDB REST API Boilerplate
 
 This is an example project for building REST APIs with ES6, Express and MongoDB.
 
-- Starting project cloned from this repo [babel](https://github.com/developit/express-es6-rest-api)
+- Starting project cloned from this repo [express-es6-rest-api](https://github.com/developit/express-es6-rest-api)
 - ES6 support via [babel](https://babeljs.io)
 - REST resources as middleware via [resource-router-middleware](https://github.com/developit/resource-router-middleware)
 - CORS support via [cors](https://github.com/troygoode/node-cors)
