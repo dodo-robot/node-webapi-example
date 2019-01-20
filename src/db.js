@@ -7,7 +7,7 @@ export default callback => {
 			logger.error("MongoDB connection error");
 			throw err;
 		} else {
-			console.log("________MongoDB connected successfully_______");
+			console.log("MongoDB connected successfully");
 			callback(mongo.db);
 		}
 	});

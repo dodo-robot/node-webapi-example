@@ -45,6 +45,17 @@ var personRepository = {
 				}
 				callback(result);
 			}) 
+	},
+
+	findPerson: function(mongo, person, callback){
+		mongo.collection("persons").findOne( 
+			person, 
+			function(err, result) {
+				if (err) {
+					throw err;
+				}
+				callback(result);
+			}) 
 	}
 }
 

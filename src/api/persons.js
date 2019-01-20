@@ -17,7 +17,6 @@ export default ({ config, db }) => resource({
 	load(req, id, callback) {
 		// Open the connection to the server
 		personRepository.findOne(db, id,  function(result){
-			console.log(id);
 			let err = result ? null : 'Not found';
 			callback(err, result);
 		});
@@ -35,12 +34,21 @@ export default ({ config, db }) => resource({
 	create({ body }, res) {
 		let result = personValidator.validate(body);
 		if(result.valid){
-			sequenceRepository.getId(db, function(id){
-				let person = new Person(id, body.firstName, body.lastName);
-				personRepository.insert(db, person, function (err, records) {
-					res.json(records);
-				});
+			let person = new Person(body.firstName, body.lastName);
+			personRepository.findPerson(db, person, exist => {
+				if(!exist){
+					sequenceRepository.getId(db, (id) => {
+						person.setId(id);
+						personRepository.insert(db, person,  (err, records) => {
+							res.json(records);
+						});
+					});
+				}else{
+					res.status(400).json("Person already exists!");
+				}
 			});
+
+	
 		}else{
 			res.status(500).json(result.errors);
 		}
@@ -66,10 +74,8 @@ export default ({ config, db }) => resource({
 
 	/** DELETE /:id - Delete a given entity */
 	delete({ person }, res) {
-		console.log(person);
 		personRepository.delete(db, person.id, function (err, records) {
 			res.status(204).json(records);
 		});
-		
 	}
 });

@@ -1,8 +1,11 @@
 class Person{
-    constructor(id, firstName, lastName){
-        this.id=id;
+    constructor(firstName, lastName){
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    setId(id){
+        this.id=id;
     }
 }
 

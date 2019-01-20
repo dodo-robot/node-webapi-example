@@ -1,7 +1,7 @@
 {
   "name": "express-es6-rest-api",
   "version": "0.3.0",
-  "description": "Starter project for an ES6 RESTful Express API",
+  "description": "Starter project for an ES6 RESTful Express MongoDB API",
   "main": "dist",
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
@@ -24,12 +24,6 @@
       "no-unused-vars": 1
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/developit/express-es6-rest-api.git"
-  },
-  "author": "Jason Miller <jason@developit.ca>",
-  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
@@ -48,9 +42,5 @@
     "babel-preset-stage-0": "^6.5.0",
     "eslint": "^3.1.1",
     "nodemon": "^1.18.9"
-  },
-  "bugs": {
-    "url": "https://github.com/developit/express-es6-rest-api/issues"
-  },
-  "homepage": "https://github.com/developit/express-es6-rest-api#readme"
+  }
 }

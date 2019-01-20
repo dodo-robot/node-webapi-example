@@ -5,7 +5,7 @@ var mongoUtil = {
 
     init: function (callback) {
 
-        var mongoUrl = 'mongodb://localhost:27017';
+        var mongoUrl = 'mongodb://database:27017';
 
         console.log("Connecting to [ "+mongoUrl+" ]");
 

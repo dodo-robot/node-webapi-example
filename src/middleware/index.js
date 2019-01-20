@@ -15,14 +15,15 @@ export default ({ config, db }) => {
 		console.log('Request URL:', req.originalUrl)
 		next()
 	}, function (req, res, next) {
+		console.log('Method Type:', req.method)
+		next()
+	}, function (req, res, next) {
 		console.log('Request Type:', req.method)
 		next()
 	}, function (req, res, next) {
-		console.log('Andother Function:', req.host)
+		console.log('Remote Address:', req.connection.remoteAddress)
 		next()
 	});
-
-
 
 	return routes;
 }

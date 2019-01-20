@@ -1,9 +1,9 @@
-// var logger = require('log4js').getLogger();
+var logger = require('log4js').getLogger();
 
 var sequenceRepository = {
 
 	getId: function(mongo, callback){
-		mongo.getCollection("sequence").findOneAndUpdate(
+		mongo.collection("sequence").findOneAndUpdate(
 			{ name: "persons" }, 
 			{ $inc: {seq: 1} }, 
 			{ upsert: true }, 
@@ -12,7 +12,14 @@ var sequenceRepository = {
 					throw err; 
 				}
 				else { 
-					callback(doc.value.seq); 
+					if(doc.value){
+						callback(doc.value.seq); 
+					}else {
+						if(doc.ok){
+							console.log("sequence created");
+							callback(0);
+						}
+					}
 				}
 			}); 
 	}

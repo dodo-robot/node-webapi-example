@@ -1,27 +1,25 @@
 Express & ES6 REST API Boilerplate
 ==================================
 
-This is a straightforward boilerplate for building REST APIs with ES6 and Express.
+This is an example project for building REST APIs with ES6, Express and MongoDB.
 
+- Starting project clone [babel](https://github.com/developit/express-es6-rest-api)
 - ES6 support via [babel](https://babeljs.io)
 - REST resources as middleware via [resource-router-middleware](https://github.com/developit/resource-router-middleware)
 - CORS support via [cors](https://github.com/troygoode/node-cors)
 - Body Parsing via [body-parser](https://github.com/expressjs/body-parser)
 
-> Tip: If you are using [Mongoose](https://github.com/Automattic/mongoose), you can automatically expose your Models as REST resources using [restful-mongoose](https://git.io/restful-mongoose).
-
-
 
 Getting Started
 ---------------
 
+docker container run -d -v mydata:/var/lib/mongo -p 27017:27017 --network my-network --rm --name database mongo:3.4-jessie
+docker  run -d --network my-network -p 8080:8080 --rm --name webapi -t dodorobot/nodejs-image-demo
+
 ```sh
 # clone it
 git clone git@github.com:developit/express-es6-rest-api.git
-cd express-es6-rest-api
-
-# Make it your own
-rm -rf .git && git init && npm init
+cd express-es6-rest-api 
 
 # Install dependencies
 npm install
