@@ -1,30 +1,30 @@
 class DummyMetric {
-    constructor(){
-        this.consecutiveZeros = 0;
-        this.asciiSum = 0;
-        this.binary = '';
+    constructor(value){
+        this.consecutiveZeros = this._consecutiveZeros(value);
+        this.asciiSum = this._asciiSum(value);
+        this.binary = this._binary(this.asciiSum);
     }
 
-    calculateMetrics(value){ 
-        let that = this;
-        let metric = new Promise(function(resolve, reject) {
-            let sum = that._asciiSum(value);
-            that.asciiSum = sum;
-            resolve(sum);
-          }); 
+    // calculateMetrics(value){ 
+    //     let that = this;
+    //     let metric = new Promise(function(resolve, reject) {
+    //         let sum = that._asciiSum(value);
+    //         that.asciiSum = sum;
+    //         resolve(sum);
+    //       }); 
 
-        return metric.then(sum => {
-            that.binary = that._binary(sum);
-            return that.binary;
-        }).then(binary =>{
-            that.consecutiveZeros = that._consecutiveZeros(binary);
-            return  {
-               ascii: that.asciiSum,
-               zeros: that.consecutiveZeros,
-               binary: that.binary,
-            }
-        });
-    } 
+    //     return metric.then(sum => {
+    //         that.binary = that._binary(sum);
+    //         return that.binary;
+    //     }).then(binary =>{
+    //         that.consecutiveZeros = that._consecutiveZeros(binary);
+    //         return  {
+    //            ascii: that.asciiSum,
+    //            zeros: that.consecutiveZeros,
+    //            binary: that.binary,
+    //         }
+    //     });
+    // } 
 
     _asciiSum(value){
         let sum = 0;

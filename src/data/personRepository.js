@@ -8,12 +8,14 @@ var personRepository = {
  
 	
 	findAll: function(mongo, callback){
-		mongo.collection("persons").find({}, function(err, result) {
-			if (err) throw err;
-			return result.toArray();
-		}).then(result =>{
-			callback(result);
-		});
+		return new Promise(function(resolve, reject) {
+            mongo.collection("persons").find({}, function(err, result) {
+				if (err) throw err;
+				return result.toArray();
+			}).then(result =>{
+				resolve(result);
+			});
+		}); 
 	},
 
 	update: function(mongo, person, callback){
@@ -37,6 +39,7 @@ var personRepository = {
 	},
 	
 	findOne: function(mongo, personId, callback){
+
 		mongo.collection("persons").findOne( 
 			{ id : parseInt(personId) }, 
 			function(err, result) {

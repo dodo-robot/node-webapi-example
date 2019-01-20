@@ -23,9 +23,8 @@ export default ({ config, db }) => resource({
 
 	/** GET /:id - Return a given entity */
 	read({ metric }, res) {
-		let m = new DummyMetric();
-		m.calculateMetrics(metric.firstName+" "+metric.lastName)
-			.then(result => res.json(result));
+		let m = new DummyMetric(metric.firstName+" "+metric.lastName);
+		res.json(m);
 	},
 
 });
