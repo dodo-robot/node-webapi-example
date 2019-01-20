@@ -1,4 +1,4 @@
-Express & ES6 REST API Boilerplate
+Express & ES6 MongoDB REST API Boilerplate
 ==================================
 
 This is an example project for building REST APIs with ES6, Express and MongoDB.
