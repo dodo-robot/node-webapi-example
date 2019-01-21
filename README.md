@@ -61,6 +61,7 @@ docker container run -d -v mydata:/var/lib/mongo -p 27017:27017 --network my-net
 
 # run this docker
 docker  run -p 8080:8080   -d   --network my-network --rm --name webapi -t dodorobot/node-webapi-example
+
 #                 ^         ^                ^         ^                            ^
 #          bind the port  detach         connect to    remove                  container tag
 #          to your host  console from    my-network    the name

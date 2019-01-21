@@ -1,8 +1,9 @@
 class DummyMetric {
     constructor(value){
-        this.consecutiveZeros = this._consecutiveZeros(value);
         this.asciiSum = this._asciiSum(value);
         this.binary = this._binary(this.asciiSum);
+        this.consecutiveZeros = this._consecutiveZeros(this.binary);
+
     }
 
     // calculateMetrics(value){ 
