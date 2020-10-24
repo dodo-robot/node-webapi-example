@@ -69,8 +69,4 @@ docker  run -p 8080:8080   -d   --network my-network --rm --name webapi -t dodor
 
 ```
 
-
-License
--------
-
-MIT
+ 
